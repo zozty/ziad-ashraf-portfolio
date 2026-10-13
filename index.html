@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ziad Ashraf | Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6FA; --surface:#FFFFFF; --ink:#14213D; --muted:#53607A; --line:#D9E1EC;
+  --accent:#0A7C8C; --accent-ink:#FFFFFF;
+  --bad-bg:#FDECEA; --bad:#B3261E; --good-bg:#E4F4EC; --good:#1B7A4B;
+  --sans:'IBM Plex Sans','IBM Plex Sans Arabic','DejaVu Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1626; --surface:#16213A; --ink:#E8EEF8; --muted:#9AA8C2; --line:#27344F;
+    --accent:#4FC3D4; --accent-ink:#0E1626;
+    --bad-bg:#3A1C1E; --bad:#FF8A80; --good-bg:#143A2A; --good:#6FD7A1;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1626; --surface:#16213A; --ink:#E8EEF8; --muted:#9AA8C2; --line:#27344F;
+  --accent:#4FC3D4; --accent-ink:#0E1626;
+  --bad-bg:#3A1C1E; --bad:#FF8A80; --good-bg:#143A2A; --good:#6FD7A1;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%}
+html[lang="ar"] body{line-height:1.85}
+.wrap{max-width:1040px;margin-inline:auto;padding-inline:20px}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:600;font-size:1.05rem}
+.lang{font:inherit;font-size:.92rem;font-weight:500;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 14px;cursor:pointer}
+.lang:hover{border-color:var(--accent)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center;padding-block:64px 56px}
+h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.15;font-weight:600;margin:0 0 18px;letter-spacing:-.01em}
+html[lang="ar"] h1{line-height:1.4;letter-spacing:0}
+.hero p{margin:0;color:var(--muted);max-width:52ch;font-size:1.08rem}
+
+.widget{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.w-head{padding:14px 18px 0}
+.w-title{font-weight:600;margin:0}
+.w-cap{margin:4px 0 0;color:var(--muted);font-size:.88rem;line-height:1.55}
+.tbl-wrap{overflow-x:auto;padding:14px 18px 6px}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:.84rem;min-width:420px}
+th{font-weight:500;color:var(--muted);text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap;transition:background-color .5s,color .5s}
+td.bad{background:var(--bad-bg);color:var(--bad)}
+td.fixed{background:var(--good-bg);color:var(--good)}
+td.blank{font-style:italic}
+tr.dupe td{background:var(--bad-bg);color:var(--bad)}
+tr.gone{display:none}
+.w-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:10px 18px 16px}
+.btn{font:inherit;font-weight:600;font-size:.95rem;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:9px 18px;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.status{margin:0;flex:1 1 220px;font-size:.88rem;color:var(--muted);line-height:1.55}
+
+section.block{padding-block:48px;border-top:1px solid var(--line)}
+h2{font-size:1.55rem;line-height:1.25;margin:0 0 8px;font-weight:600}
+.lead{margin:0 0 28px;color:var(--muted);max-width:62ch}
+
+.proj{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:8px 36px;padding-block:26px;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:6px}
+.proj h3{margin:0;font-size:1.12rem;line-height:1.35;font-weight:600}
+.meta{color:var(--muted);font-size:.92rem;margin-top:6px}
+.chip{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:500;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 10px}
+.proj ul{margin:0;padding-inline-start:1.15rem}
+.proj li{margin-bottom:6px}
+.note{margin:10px 0 0;font-size:.92rem;color:var(--muted);border-inline-start:3px solid var(--line);padding-inline-start:12px}
+.tools{margin:12px 0 0;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+html[lang="ar"] .tools{direction:ltr;text-align:right}
+
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.svc div{padding-block:16px;border-top:1px solid var(--line)}
+.svc h3{margin:0 0 4px;font-size:1.05rem;font-weight:600}
+.svc p{margin:0;color:var(--muted)}
+.how{margin:34px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.how li{padding-top:14px;border-top:3px solid var(--accent)}
+.how b{display:block;font-weight:600;margin-bottom:2px}
+h3.sub{font-size:1.05rem;margin:34px 0 0;font-weight:600}
+
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.skills h3{margin:0 0 8px;font-size:1rem;font-weight:600}
+.skills ul{margin:0;padding:0;list-style:none;color:var(--muted)}
+.skills li{padding:3px 0}
+
+.contact-list{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px;padding:0;list-style:none}
+.contact-list a,.contact-list span{display:inline-block;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 16px;font-weight:500;text-decoration:none;color:var(--ink)}
+.contact-list a:hover{border-color:var(--accent);color:var(--accent)}
+.contact-list span{color:var(--muted)}
+footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:40px 36px}
+  .proj{grid-template-columns:minmax(0,1fr)}
+  .svc{grid-template-columns:minmax(0,1fr)}
+  .how{grid-template-columns:minmax(0,1fr)}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion: reduce){ td{transition:none} }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <span class="brand">Ziad Ashraf</span>
+  <button class="lang" id="lang" type="button">العربية</button>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1 id="h1"></h1>
+      <p id="heroP"></p>
+    </div>
+    <div class="widget">
+      <div class="w-head">
+        <p class="w-title" id="wTitle"></p>
+        <p class="w-cap" id="wCap"></p>
+      </div>
+      <div class="tbl-wrap" dir="ltr">
+        <table aria-label="Sample data table">
+          <thead><tr><th>id</th><th>item</th><th>quantity</th><th>price</th><th>total</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="w-foot">
+        <button class="btn" id="cleanBtn" type="button" aria-pressed="false"></button>
+        <p class="status" id="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <h2 id="projH"></h2>
+    <p class="lead" id="projLead"></p>
+    <div id="projList"></div>
+  </section>
+
+  <section class="block" id="services">
+    <h2 id="svcH"></h2>
+    <p class="lead" id="svcLead"></p>
+    <div class="svc" id="svcList"></div>
+    <h3 class="sub" id="howH"></h3>
+    <ol class="how" id="howList"></ol>
+  </section>
+
+  <section class="block" id="skills">
+    <h2 id="skillH"></h2>
+    <div class="skills" id="skillList" style="margin-top:22px"></div>
+  </section>
+
+  <section class="block" id="contact">
+    <h2 id="contactH"></h2>
+    <p class="lead" id="contactLead"></p>
+    <ul class="contact-list" id="contactList"></ul>
+    <p class="lead" id="contactNote" style="margin-bottom:0"></p>
+  </section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+/* Fill in these links, then republish. Empty values stay as plain text. */
+var CONTACT = {
+  email: "",
+  links: {
+    Mostaql: "https://mostaql.com/u/Ziadas12",
+    Khamsat: "https://khamsat.com/user/ziad_ashraf223",
+    Nafezly: "https://nafezly.com/u/Ziad_Ashraf22",
+    Kafiil: "https://kafiil.com/u/ziad_ashraf15"
+  }
+};
+
+var T = {
+  en: {
+    langBtn: "العربية",
+    h1: "I turn messy data into clean tables you can trust.",
+    heroP: "I'm a data analysis student. I use Python and Pandas to clean data, explore it, and show the results in clear charts.",
+    wTitle: "Try it: a messy sample file",
+    wCap: "Sample rows for illustration. These are the same kinds of fixes I made in my projects.",
+    btnClean: "Clean the data", btnReset: "Show the messy data",
+    stDirty: "Found 1 duplicate row, 1 ERROR label, 1 UNKNOWN quantity, and 1 blank price.",
+    stClean: "Removed 1 duplicate, recovered 2 values using Total = Quantity × Price, and labeled 1 unknown item.",
+    blank: "(blank)",
+    projH: "Projects",
+    projLead: "Three learning projects built on practice datasets. Each one has a notebook with the cleaning steps, charts, and written conclusions.",
+    tag: "Learning project",
+    projects: [
+      { title: "Cafe Sales: cleaning and charts", data: "10,000 transactions",
+        bullets: ["Found missing data hidden as blanks, “ERROR”, and “UNKNOWN”.",
+                  "Fixed date and number types, and checked for duplicates.",
+                  "Recovered 1,398 missing values using Total = Quantity × Price.",
+                  "Compared revenue by item, payment method, location, and month in 15 charts."],
+        note: "", tools: "Python, Pandas, NumPy, Matplotlib, Seaborn" },
+      { title: "Retail Sales: business analysis", data: "2,000 orders, 2023–2025",
+        bullets: ["Removed 50 duplicate rows and standardized names, categories, and payment methods.",
+                  "Split location into city and country, and handled missing values and outliers.",
+                  "Added revenue, estimated profit, fees, and customer age groups.",
+                  "Answered 10+ business questions with interactive charts."],
+        note: "Profit uses assumed product costs, because this is practice work.", tools: "Python, Pandas, NumPy, Plotly, Seaborn" },
+      { title: "Airbnb NYC: listings analysis", data: "About 102,600 listings",
+        bullets: ["Removed 541 duplicate rows and fixed misspelled borough names.",
+                  "Converted price and date columns to the right types and handled invalid values.",
+                  "Filled missing values with the median or an “Unknown” label.",
+                  "Answered 25 questions on price, room type, borough, availability, and reviews."],
+        note: "The dataset looks partly synthetic, so the findings are for practice, not market advice.", tools: "Python, Pandas, NumPy, Plotly" }
+    ],
+    svcH: "Services", svcLead: "What I can do for your data:",
+    services: [
+      ["Data cleaning", "Fix missing values, duplicates, wrong data types, and inconsistent names."],
+      ["Exploratory analysis", "Look for patterns and answer your questions about the data."],
+      ["Charts and visuals", "Clear charts that make the results easy to read."],
+      ["Data preparation", "Get your file ready for the next step of your analysis."]
+    ],
+    howH: "How we work together",
+    how: [["You send a sample", "Share part of your file and tell me what you need."],
+          ["We agree on the scope", "I check the file, then we agree on the work, price, and delivery time."],
+          ["You get the result", "The cleaned file and a notebook that shows every step."]],
+    skillH: "Skills",
+    skills: [["Analysis", ["Python", "Pandas", "NumPy"]],
+             ["Charts", ["Plotly", "Matplotlib", "Seaborn"]],
+             ["Tools", ["Jupyter Notebook", "Google Colab"]],
+             ["Learning now", ["Machine Learning basics"]]],
+    contactH: "Contact", contactLead: "Find me on these platforms:",
+    contactNote: "Before you order, send me a sample of your file so I can give you a fair scope and price.",
+    foot: "© 2026 Ziad Ashraf. All projects on this page are learning projects."
+  },
+  ar: {
+    langBtn: "English",
+    h1: "أحوّل البيانات الفوضوية إلى جداول نظيفة تثق بها.",
+    heroP: "أنا طالب تحليل بيانات. أستخدم Python وPandas لتنظيف البيانات واستكشافها وعرض النتائج في رسوم بيانية واضحة.",
+    wTitle: "جرّبها: ملف بيانات غير منظم",
+    wCap: "صفوف تجريبية للتوضيح. هذه نفس أنواع الإصلاحات التي نفذتها في مشاريعي.",
+    btnClean: "نظّف البيانات", btnReset: "أظهر البيانات غير المنظمة",
+    stDirty: "وُجد صف مكرر واحد، وقيمة ERROR واحدة، وكمية UNKNOWN واحدة، وسعر فارغ واحد.",
+    stClean: "تم حذف صف مكرر، واسترجاع قيمتين باستخدام: الإجمالي = الكمية × السعر، ووضع تصنيف Unknown لمنتج غير معروف.",
+    blank: "(فارغ)",
+    projH: "المشاريع",
+    projLead: "ثلاثة مشاريع تعليمية على بيانات تدريبية. لكل مشروع Notebook يوضح خطوات التنظيف والرسوم والاستنتاجات.",
+    tag: "مشروع تعليمي",
+    projects: [
+      { title: "مبيعات كافيه: تنظيف ورسوم بيانية", data: "10,000 معاملة",
+        bullets: ["اكتشاف بيانات ناقصة مخفية في صورة خانات فارغة وقيم ERROR وUNKNOWN.",
+                  "تصحيح أنواع التواريخ والأرقام والتأكد من عدم وجود تكرارات.",
+                  "استرجاع 1,398 قيمة ناقصة باستخدام: الإجمالي = الكمية × السعر.",
+                  "مقارنة الإيراد حسب المنتج وطريقة الدفع والموقع والشهر في 15 رسمًا بيانيًا."],
+        note: "", tools: "Python, Pandas, NumPy, Matplotlib, Seaborn" },
+      { title: "مبيعات متجر تجزئة: تحليل تجاري", data: "2,000 طلب (2023–2025)",
+        bullets: ["حذف 50 صفًا مكررًا وتوحيد الأسماء والفئات وطرق الدفع.",
+                  "فصل الموقع إلى مدينة ودولة ومعالجة القيم المفقودة والقيم المتطرفة.",
+                  "إضافة الإيراد والربح التقديري والرسوم والفئات العمرية للعملاء.",
+                  "الإجابة عن أكثر من 10 أسئلة تجارية برسوم تفاعلية."],
+        note: "الربح محسوب بتكاليف منتجات افتراضية لأن العمل تدريبي.", tools: "Python, Pandas, NumPy, Plotly, Seaborn" },
+      { title: "Airbnb نيويورك: تحليل الإعلانات", data: "حوالي 102,600 إعلان",
+        bullets: ["حذف 541 صفًا مكررًا وتصحيح أخطاء إملائية في أسماء الأحياء.",
+                  "تحويل أعمدة السعر والتاريخ إلى الأنواع الصحيحة ومعالجة القيم غير المنطقية.",
+                  "ملء القيم المفقودة بالوسيط أو بتصنيف Unknown.",
+                  "الإجابة عن 25 سؤالًا حول السعر ونوع الغرفة والحي والتوافر والمراجعات."],
+        note: "البيانات تبدو شبه اصطناعية، فالنتائج للتدريب وليست نصيحة عن السوق.", tools: "Python, Pandas, NumPy, Plotly" }
+    ],
+    svcH: "الخدمات", svcLead: "ما أستطيع فعله لبياناتك:",
+    services: [
+      ["تنظيف البيانات", "معالجة القيم المفقودة والتكرارات وأنواع البيانات الخاطئة والأسماء غير المتسقة."],
+      ["التحليل الاستكشافي", "البحث عن الأنماط والإجابة عن أسئلتك حول البيانات."],
+      ["الرسوم البيانية", "رسوم واضحة تجعل النتائج سهلة القراءة."],
+      ["تجهيز البيانات", "تجهيز ملفك للخطوة التالية من التحليل."]
+    ],
+    howH: "كيف نعمل معًا",
+    how: [["ترسل لي عينة", "شارك جزءًا من ملفك وأخبرني بما تحتاجه."],
+          ["نتفق على نطاق العمل", "أراجع الملف ثم نتفق على العمل والسعر ومدة التسليم."],
+          ["تستلم النتيجة", "الملف بعد التنظيف وNotebook يوضح كل خطوة."]],
+    skillH: "المهارات",
+    skills: [["التحليل", ["Python", "Pandas", "NumPy"]],
+             ["الرسوم", ["Plotly", "Matplotlib", "Seaborn"]],
+             ["الأدوات", ["Jupyter Notebook", "Google Colab"]],
+             ["قيد التعلم", ["أساسيات تعلّم الآلة"]]],
+    contactH: "التواصل", contactLead: "تجدني على هذه المنصات:",
+    contactNote: "قبل الطلب، أرسل لي عينة من ملفك لأحدد لك نطاق العمل والسعر بشكل عادل.",
+    foot: "© 2026 Ziad Ashraf. جميع المشاريع في هذه الصفحة مشاريع تعليمية."
+  }
+};
+
+var lang = "en", clean = false;
+var $ = function (id) { return document.getElementById(id); };
+
+/* Sample rows (illustrative only) */
+var cols = ["id", "item", "quantity", "price", "total"];
+var rows = [
+  { id: "TXN_101", item: "Coffee", quantity: "2", price: "2.00", total: "4.00" },
+  { id: "TXN_102", item: "ERROR", quantity: "3", price: "4.00", total: "12.00", bad: ["item"], fix: { item: "Unknown" } },
+  { id: "TXN_103", item: "Cake", quantity: "UNKNOWN", price: "3.00", total: "9.00", bad: ["quantity"], fix: { quantity: "3" } },
+  { id: "TXN_104", item: "Tea", quantity: "1", price: "", total: "1.50", bad: ["price"], fix: { price: "1.50" } },
+  { id: "TXN_101", item: "Coffee", quantity: "2", price: "2.00", total: "4.00", dup: true }
+];
+var cells = [];
+
+function buildTable() {
+  var tb = $("tbody"); tb.innerHTML = ""; cells = [];
+  rows.forEach(function (r) {
+    var tr = document.createElement("tr"), rowCells = {};
+    cols.forEach(function (c) { var td = document.createElement("td"); rowCells[c] = td; tr.appendChild(td); });
+    tb.appendChild(tr); cells.push({ tr: tr, tds: rowCells, r: r });
+  });
+}
+function applyTable() {
+  cells.forEach(function (o) {
+    var r = o.r;
+    o.tr.className = r.dup ? (clean ? "gone" : "dupe") : "";
+    cols.forEach(function (c) {
+      var td = o.tds[c], v = r[c], cls = "";
+      if (clean && r.fix && r.fix[c] !== undefined) { v = r.fix[c]; cls = "fixed"; }
+      else if (!clean && r.bad && r.bad.indexOf(c) > -1) { cls = "bad"; }
+      if (v === "") { v = T[lang].blank; cls += " blank"; }
+      td.textContent = v; td.className = cls;
+    });
+  });
+}
+function applyWidgetText() {
+  var t = T[lang];
+  $("cleanBtn").textContent = clean ? t.btnReset : t.btnClean;
+  $("cleanBtn").setAttribute("aria-pressed", clean ? "true" : "false");
+  $("status").textContent = clean ? t.stClean : t.stDirty;
+}
+function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
+
+function renderAll() {
+  var t = T[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  $("lang").textContent = t.langBtn;
+  $("h1").textContent = t.h1; $("heroP").textContent = t.heroP;
+  $("wTitle").textContent = t.wTitle; $("wCap").textContent = t.wCap;
+  applyWidgetText(); applyTable();
+
+  $("projH").textContent = t.projH; $("projLead").textContent = t.projLead;
+  var pl = $("projList"); pl.innerHTML = "";
+  t.projects.forEach(function (p) {
+    var row = el("article", "proj"), left = el("div"), right = el("div");
+    left.appendChild(el("h3", "", p.title));
+    left.appendChild(el("div", "meta", p.data));
+    left.appendChild(el("span", "chip", t.tag));
+    var ul = el("ul"); p.bullets.forEach(function (b) { ul.appendChild(el("li", "", b)); });
+    right.appendChild(ul);
+    if (p.note) right.appendChild(el("p", "note", p.note));
+    right.appendChild(el("p", "tools", p.tools));
+    row.appendChild(left); row.appendChild(right); pl.appendChild(row);
+  });
+
+  $("svcH").textContent = t.svcH; $("svcLead").textContent = t.svcLead;
+  var sl = $("svcList"); sl.innerHTML = "";
+  t.services.forEach(function (s) { var d = el("div"); d.appendChild(el("h3", "", s[0])); d.appendChild(el("p", "", s[1])); sl.appendChild(d); });
+  $("howH").textContent = t.howH;
+  var hl = $("howList"); hl.innerHTML = "";
+  t.how.forEach(function (s) { var li = el("li"); li.appendChild(el("b", "", s[0])); li.appendChild(document.createTextNode(s[1])); hl.appendChild(li); });
+
+  $("skillH").textContent = t.skillH;
+  var kl = $("skillList"); kl.innerHTML = "";
+  t.skills.forEach(function (g) {
+    var d = el("div"); d.appendChild(el("h3", "", g[0]));
+    var ul = el("ul"); g[1].forEach(function (s) { ul.appendChild(el("li", "", s)); });
+    d.appendChild(ul); kl.appendChild(d);
+  });
+
+  $("contactH").textContent = t.contactH; $("contactLead").textContent = t.contactLead;
+  $("contactNote").textContent = t.contactNote;
+  var cl = $("contactList"); cl.innerHTML = "";
+  Object.keys(CONTACT.links).forEach(function (name) {
+    var li = el("li"), url = CONTACT.links[name], node;
+    if (url) { node = el("a", "", name); node.href = url; node.target = "_blank"; node.rel = "noopener"; }
+    else { node = el("span", "", name); }
+    li.appendChild(node); cl.appendChild(li);
+  });
+  if (CONTACT.email) { var li = el("li"), a = el("a", "", CONTACT.email); a.href = "mailto:" + CONTACT.email; li.appendChild(a); cl.appendChild(li); }
+  $("foot").textContent = t.foot;
+}
+
+$("cleanBtn").addEventListener("click", function () { clean = !clean; applyTable(); applyWidgetText(); });
+$("lang").addEventListener("click", function () { lang = lang === "en" ? "ar" : "en"; renderAll(); });
+
+buildTable(); renderAll();
+</script>
+</body>
+</html>
